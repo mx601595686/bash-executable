@@ -1,6 +1,6 @@
 {
     "name": "bash-executable",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "description": "为在Windows下的Bash文件在Git中添加可执行权限 | Add executable permissions for Bash files in Git under Windows environment",
     "main": "./bin/index.js",
     "bin": {
@@ -10,7 +10,6 @@
         "win32"
     ],
     "scripts": {
-        "test": "mocha --require ts-node/register ./test/index.test.ts",
         "compile": "gulp compile"
     },
     "keywords": [
@@ -28,18 +27,13 @@
     },
     "homepage": "https://github.com/mx601595686/bash-executable#readme",
     "devDependencies": {
-        "@types/expect.js": "^0.3.29",
-        "@types/mocha": "^5.2.7",
         "@types/node": "^12.6.2",
-        "expect.js": "^0.3.1",
         "gulp": "^4.0.2",
         "gulp-typescript": "^5.0.1",
-        "mocha": "^6.1.4",
         "ts-node": "^8.3.0",
         "typescript": "^3.5.3"
     },
     "dependencies": {
-        "eol": "^0.9.1",
-        "log-formatter": "^1.0.6"
+        "chalk": "^2.4.2"
     }
 }
