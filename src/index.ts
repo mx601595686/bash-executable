@@ -93,32 +93,31 @@ function commandParser() {
             break;
         }
         default: {
-            if (args[0] === '-a' || args.length > 1) {
-                if (args[0] === '-a') var is_a = args.shift();
-                const rootPath = child_process.execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
+            if (args[0] === '-a') var is_a = args.shift();
 
-                child_process.execFileSync('git', ['ls-files', '--stage', '--eol', '--full-name', ...args], { encoding: 'utf8' }).split('\n').filter(item => item).forEach(item => {
-                    const data = item.split(/\s/).filter(item => item);
-                    const isBash = !is_a || item.endsWith('.sh');
-                    const executable = data[0].includes('7');
-                    const not_lf = data[4].includes('crlf');
+            const rootPath = child_process.execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
 
-                    if (executable || isBash) {
-                        const filePath = path.resolve(rootPath, data[6]);
+            child_process.execFileSync('git', ['ls-files', '--stage', '--eol', '--full-name', ...args], { encoding: 'utf8' }).split('\n').filter(item => item).forEach(item => {
+                const data = item.split(/\s/).filter(item => item);
+                const isBash = !is_a || item.endsWith('.sh');
+                const executable = data[0].includes('7');
+                const not_lf = data[4].includes('crlf');
 
-                        if (not_lf) {
-                            const data = fs.readFileSync(filePath, { encoding: 'utf8' });
-                            fs.writeFileSync(filePath, data.replace(/\r\n/g, '\n'));
-                            console.log(languagePack.change_EOL, data[6]);
-                        }
+                if (executable || isBash) {
+                    const filePath = path.resolve(rootPath, data[6]);
 
-                        if (!executable) {
-                            child_process.execFileSync('git', ['add', '--chmod=+x', filePath]);
-                            console.log(languagePack.add_execute_permission, data[6]);
-                        }
+                    if (not_lf) {
+                        const data = fs.readFileSync(filePath, { encoding: 'utf8' });
+                        fs.writeFileSync(filePath, data.replace(/\r\n/g, '\n'));
+                        console.log(languagePack.change_EOL, data[6]);
                     }
-                });
-            }
+
+                    if (!executable) {
+                        child_process.execFileSync('git', ['add', '--chmod=+x', filePath]);
+                        console.log(languagePack.add_execute_permission, data[6]);
+                    }
+                }
+            });
             break;
         }
     }

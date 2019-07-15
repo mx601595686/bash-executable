@@ -1,7 +1,7 @@
 {
     "name": "bash-executable",
-    "version": "0.1.1",
-    "description": "为在Windows下的Bash文件在Git中添加可执行权限 | Add executable permissions for Bash files in Git under Windows environment",
+    "version": "0.1.2",
+    "description": "为在Windows下的Bash文件在Git中添加可执行权限 | Add executable permission for Bash files in Git under Windows environment",
     "main": "./bin/index.js",
     "bin": {
         "executable": "./bin/index.js"
