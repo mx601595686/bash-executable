@@ -20,12 +20,12 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mx601595686/bash-executable.git"
+        "url": "git+https://github.com/wu-jingtao/bash-executable.git"
     },
     "bugs": {
-        "url": "https://github.com/mx601595686/bash-executable/issues"
+        "url": "https://github.com/wu-jingtao/bash-executable/issues"
     },
-    "homepage": "https://github.com/mx601595686/bash-executable#readme",
+    "homepage": "https://github.com/wu-jingtao/bash-executable#readme",
     "devDependencies": {
         "@types/node": "^12.6.2",
         "gulp": "^4.0.2",
